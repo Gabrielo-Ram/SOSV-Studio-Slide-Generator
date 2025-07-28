@@ -1,0 +1,35 @@
+{
+  "name": "sosv-studio-slide-generator",
+  "version": "1.0.0",
+  "description": "A prototype for a tool that creates one long-form slide deck for a collection of startup companies in a CSV file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && chmod 755 build/index.js",
+    "start": "node ./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabrielo-Ram/SOSV-Studio-Slide-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Gabrielo-Ram/SOSV-Studio-Slide-Generator/issues"
+  },
+  "homepage": "https://github.com/Gabrielo-Ram/SOSV-Studio-Slide-Generator#readme",
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.2.1",
+    "fs": "^0.0.1-security",
+    "googleapis": "^154.0.0",
+    "path": "^0.12.7",
+    "pptxgenjs": "^4.0.1"
+  }
+}

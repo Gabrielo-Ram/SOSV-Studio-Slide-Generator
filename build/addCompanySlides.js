@@ -36,6 +36,8 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
         h: "25%",
         sizing: {
             type: "contain",
+            w: "30%",
+            h: "25%",
         },
     })
         .addText(companyName, {
@@ -44,6 +46,7 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
         y: "45%",
         w: "37%",
         h: "15%",
+        color: "FFFFFF",
     })
         .addText(tagline, {
         fontSize: 20,
@@ -65,10 +68,10 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
  * @param {string} verticals The company's verticals
  * @param {string} country  The company's country or origin
  * @param {string} description A description of the company's goals/solution
- * @param {string} backgroundImage An URL of the company's hero image
  * @param {string} logoURL An URL of the company's logo
+ * @param {string} backgroundImage An URL of the company's hero image
  */
-export function addOverviewSlide(presentation, verticals, country, description, backgroundImage = defaultBackgroundImage, logoURL = defaultLogo) {
+export function addOverviewSlide(presentation, verticals, country, description, logoURL = defaultLogo, backgroundImage = defaultBackgroundImage) {
     let slide = presentation.addSlide();
     slide.background = {
         path: backgroundImage,
@@ -84,7 +87,7 @@ export function addOverviewSlide(presentation, verticals, country, description, 
         x: "87%",
         y: "87%",
         w: "10%",
-        h: "10%",
+        //h: "10%",
         sizing: {
             type: "contain",
         },
@@ -123,10 +126,10 @@ export function addOverviewSlide(presentation, verticals, country, description, 
  * @param {any} presentation The Pptxgenjs presentation instance
  * @param {string} founder The company's founder
  * @param {string} website The company's website URL
- * @param {string} backgroundImage An image URL of the background
  * @param {string} logoURL The URL image of the logo
+ * @param {string} backgroundImage An image URL of the background
  */
-export function theAskSlide(presentation, founder, website, backgroundImage = defaultBackgroundImage, logoURL = defaultLogo) {
+export function theAskSlide(presentation, founder, website, logoURL = defaultLogo, backgroundImage = defaultBackgroundImage) {
     let slide = presentation.addSlide();
     slide.background = {
         path: backgroundImage,
@@ -142,7 +145,7 @@ export function theAskSlide(presentation, founder, website, backgroundImage = de
         x: "87%",
         y: "87%",
         w: "10%",
-        h: "10%",
+        //h: "10%",
         sizing: {
             type: "contain",
         },

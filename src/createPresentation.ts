@@ -127,16 +127,9 @@ async function addCompany(companyData: Startup) {
       verticals,
       country,
       description,
-      backgroundImageURL,
       logoURL
     );
-    await theAskSlide(
-      presentation,
-      founder,
-      website,
-      backgroundImageURL,
-      logoURL
-    );
+    await theAskSlide(presentation, founder, website, logoURL);
   } catch (error) {
     throw new Error(`Failed to add company slides: \n${error}`);
   }

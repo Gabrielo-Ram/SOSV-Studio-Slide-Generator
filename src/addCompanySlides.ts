@@ -50,6 +50,8 @@ export function companyCoverSlide(
       h: "25%",
       sizing: {
         type: "contain",
+        w: "30%",
+        h: "25%",
       },
     })
     .addText(companyName, {
@@ -58,6 +60,7 @@ export function companyCoverSlide(
       y: "45%",
       w: "37%",
       h: "15%",
+      color: "FFFFFF",
     })
     .addText(tagline, {
       fontSize: 20,
@@ -80,16 +83,16 @@ export function companyCoverSlide(
  * @param {string} verticals The company's verticals
  * @param {string} country  The company's country or origin
  * @param {string} description A description of the company's goals/solution
- * @param {string} backgroundImage An URL of the company's hero image
  * @param {string} logoURL An URL of the company's logo
+ * @param {string} backgroundImage An URL of the company's hero image
  */
 export function addOverviewSlide(
   presentation: any,
   verticals: string,
   country: string,
   description: string,
-  backgroundImage = defaultBackgroundImage,
-  logoURL = defaultLogo
+  logoURL = defaultLogo,
+  backgroundImage = defaultBackgroundImage
 ) {
   let slide = presentation.addSlide();
 
@@ -108,7 +111,7 @@ export function addOverviewSlide(
       x: "87%",
       y: "87%",
       w: "10%",
-      h: "10%",
+      //h: "10%",
       sizing: {
         type: "contain",
       },
@@ -148,15 +151,15 @@ export function addOverviewSlide(
  * @param {any} presentation The Pptxgenjs presentation instance
  * @param {string} founder The company's founder
  * @param {string} website The company's website URL
- * @param {string} backgroundImage An image URL of the background
  * @param {string} logoURL The URL image of the logo
+ * @param {string} backgroundImage An image URL of the background
  */
 export function theAskSlide(
   presentation: any,
   founder: string,
   website: string,
-  backgroundImage = defaultBackgroundImage,
-  logoURL = defaultLogo
+  logoURL = defaultLogo,
+  backgroundImage = defaultBackgroundImage
 ) {
   let slide = presentation.addSlide();
 
@@ -175,7 +178,7 @@ export function theAskSlide(
       x: "87%",
       y: "87%",
       w: "10%",
-      h: "10%",
+      //h: "10%",
       sizing: {
         type: "contain",
       },

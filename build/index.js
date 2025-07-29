@@ -12,6 +12,7 @@ import { parseCSVStream } from "./parseCSV.js";
 import { generateDecks } from "./createPresentation.js";
 async function main() {
     try {
+        console.log("Pitch Deck Tool Prototype:");
         //Validate command-line input
         if (process.argv.length < 2) {
             console.error("Improper usage: Please provide a CSV file path: npm run start -- <file.csv>\n");
@@ -28,8 +29,6 @@ async function main() {
         const startups = await parseCSVStream(filePath);
         //Creates presentation using the parsed data
         const presentation = await generateDecks(startups);
-        //TESTING:
-        console.log("Ran entry file 👍\n");
     }
     catch (err) {
         console.error("Error parsing CSV:", err);

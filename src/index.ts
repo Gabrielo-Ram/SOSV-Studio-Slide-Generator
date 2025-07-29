@@ -13,6 +13,8 @@ import { generateDecks } from "./createPresentation.js";
 
 async function main() {
   try {
+    console.log("Pitch Deck Tool Prototype:");
+
     //Validate command-line input
     if (process.argv.length < 2) {
       console.error(
@@ -38,9 +40,6 @@ async function main() {
 
     //Creates presentation using the parsed data
     const presentation = await generateDecks(startups);
-
-    //TESTING:
-    console.log("Ran entry file 👍\n");
   } catch (err) {
     console.error("Error parsing CSV:", err);
   }

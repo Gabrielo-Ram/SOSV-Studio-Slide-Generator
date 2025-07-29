@@ -96,8 +96,8 @@ async function addCompany(companyData) {
     try {
         const { name, founder, tagline, stage, description, foundingYear, country, verticals, website, backgroundImageURL, logoURL, heroImageURL, } = companyData;
         await companyCoverSlide(presentation, name, tagline, logoURL, heroImageURL);
-        await addOverviewSlide(presentation, verticals, country, description, backgroundImageURL, logoURL);
-        await theAskSlide(presentation, founder, website, backgroundImageURL, logoURL);
+        await addOverviewSlide(presentation, verticals, country, description, logoURL);
+        await theAskSlide(presentation, founder, website, logoURL);
     }
     catch (error) {
         throw new Error(`Failed to add company slides: \n${error}`);

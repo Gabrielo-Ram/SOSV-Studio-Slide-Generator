@@ -10,7 +10,7 @@ import { Startup } from "./types.js";
 
 //Default images
 const defaultLogo = "https://static.thenounproject.com/png/504708-200.png";
-const defaultHeroImage =
+const defaultBackgroundImage =
   "https://img.freepik.com/free-vector/abstract-pattern-design_1053-534.jpg";
 
 /**
@@ -27,7 +27,7 @@ export function companyCoverSlide(
   companyName: string,
   tagline: string,
   logoURL = defaultLogo,
-  heroImageURL = defaultHeroImage
+  heroImageURL = defaultBackgroundImage
 ) {
   let slide = presentation.addSlide();
 
@@ -80,7 +80,7 @@ export function companyCoverSlide(
  * @param {string} verticals The company's verticals
  * @param {string} country  The company's country or origin
  * @param {string} description A description of the company's goals/solution
- * @param {string} heroImageURL An URL of the company's hero image
+ * @param {string} backgroundImage An URL of the company's hero image
  * @param {string} logoURL An URL of the company's logo
  */
 export function addOverviewSlide(
@@ -88,13 +88,13 @@ export function addOverviewSlide(
   verticals: string,
   country: string,
   description: string,
-  heroImageURL = defaultHeroImage,
+  backgroundImage = defaultBackgroundImage,
   logoURL = defaultLogo
 ) {
   let slide = presentation.addSlide();
 
   slide.background = {
-    path: heroImageURL,
+    path: backgroundImage,
     x: 0,
     y: 0,
     w: "100%",
@@ -142,6 +142,69 @@ export function addOverviewSlide(
     });
 }
 
-// export function finishingSlide() {
+/**
+ * Creates a final 'The Ask' slide
+ *
+ * @param {any} presentation The Pptxgenjs presentation instance
+ * @param {string} founder The company's founder
+ * @param {string} website The company's website URL
+ * @param {string} backgroundImage An image URL of the background
+ * @param {string} logoURL The URL image of the logo
+ */
+export function theAskSlide(
+  presentation: any,
+  founder: string,
+  website: string,
+  backgroundImage = defaultBackgroundImage,
+  logoURL = defaultLogo
+) {
+  let slide = presentation.addSlide();
 
-// }
+  slide.background = {
+    path: backgroundImage,
+    x: 0,
+    y: 0,
+    w: "100%",
+    h: "100%",
+  };
+
+  slide
+    .addImage({
+      //Company Logo
+      path: logoURL,
+      x: "87%",
+      y: "87%",
+      w: "10%",
+      h: "10%",
+      sizing: {
+        type: "contain",
+      },
+    })
+    .addText("The Ask", {
+      //Title of the Slide
+      fontSize: 36,
+      x: "5%",
+      y: "8%",
+      w: "80%",
+      h: "8%",
+      align: "left",
+    })
+    .addText(website, {
+      //Country of founding
+      fontSize: 20,
+      x: "5%",
+      y: "17%",
+      w: "80%",
+      h: "4%",
+      align: "left",
+    })
+    .addText(`${founder} is looking for...`, {
+      //Country of founding
+      fontSize: 20,
+      x: "5%",
+      y: "23%",
+      w: "80%",
+      h: "60%",
+      align: "left",
+    });
+}

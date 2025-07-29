@@ -7,7 +7,7 @@
  * files.
  */
 import * as PptxGen from "pptxgenjs";
-import { addOverviewSlide, companyCoverSlide } from "./addCompanySlides.js";
+import { addOverviewSlide, companyCoverSlide, theAskSlide, } from "./addCompanySlides.js";
 //TODO: Import addCompanySlides.js!
 let todaysDate = new Date().toDateString();
 todaysDate = todaysDate.split(" ").slice(1).join(" ");
@@ -86,11 +86,18 @@ async function createPresentation(filename = "PitchDeck.pptx") {
         throw new Error(`Failed to create presentation: \n${error}`);
     }
 }
-//Creates a slide show for a company
-async function addCompanyDeck(data) {
+/**
+ * Creates slides for ONE company. This function contains
+ * reusable logic to create slides for any number of companies
+ *
+ * @param {Startup} companyData The metadata for ONE company
+ */
+async function addCompany(companyData) {
     try {
-        await companyCoverSlide(presentation, "Test Company", "A test company that literally fulfills ALL of your testing needs");
-        await addOverviewSlide(presentation, "Healthcare/Dentistry/Other Things", "France", "A really really really really really really really really really really really really really really really really really really really really really really really really really really long description.");
+        const { name, founder, tagline, stage, description, foundingYear, country, verticals, website, backgroundImageURL, logoURL, heroImageURL, } = companyData;
+        await companyCoverSlide(presentation, name, tagline, logoURL, heroImageURL);
+        await addOverviewSlide(presentation, verticals, country, description, backgroundImageURL, logoURL);
+        await theAskSlide(presentation, founder, website, backgroundImageURL, logoURL);
     }
     catch (error) {
         throw new Error(`Failed to add company slides: \n${error}`);
@@ -101,12 +108,16 @@ async function addCompanyDeck(data) {
  */
 export async function generateDecks(data) {
     console.log("Creating .pptx file...");
+    //Creates .pptx file
     await createPresentation();
+    //Adds each company to the deck
     console.log("Adding slides for each company...");
-    //for (const company in data) {}
-    await addCompanyDeck(data);
-    //Saves presentation. writeFile() will write over any file that has
-    //the same name.
+    for (const company in data) {
+        await addCompany(data[company]);
+    }
+    //Saves the presentation.
+    //IMPORTANT: writeFile() will write over any file that has
+    //the same name!
     await presentation.writeFile({ fileName: "demo.pptx" });
-    console.log("Pitch Decks were created succesfully! ✅ ");
+    console.log("Pitch Deck was created succesfully! ✅ ");
 }

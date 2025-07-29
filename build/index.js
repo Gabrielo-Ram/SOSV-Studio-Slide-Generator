@@ -24,9 +24,9 @@ async function main() {
             process.exit(1);
         }
         const filePath = path.resolve(process.cwd(), file);
-        //Parses the CSV data
+        //Parses the CSV data from file
         const startups = await parseCSVStream(filePath);
-        //Creates presentation
+        //Creates presentation using the parsed data
         const presentation = await generateDecks(startups);
         //TESTING:
         console.log("Ran entry file 👍\n");

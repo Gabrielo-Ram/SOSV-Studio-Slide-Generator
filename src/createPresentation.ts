@@ -14,7 +14,6 @@ import {
   companyCoverSlide,
   theAskSlide,
 } from "./addCompanySlides.js";
-//TODO: Import addCompanySlides.js!
 
 let todaysDate = new Date().toDateString();
 todaysDate = todaysDate.split(" ").slice(1).join(" ");
@@ -24,9 +23,6 @@ let presentation: any = null;
 function setPresentation(newPresentation: any): void {
   presentation = newPresentation;
 }
-
-//HAX THEMES COLORS
-const haxGreen = "03FF9A";
 
 /**
  * Acts as the 'main' function of this file. Handles creating a new .pptx file,
@@ -121,15 +117,26 @@ async function addCompany(companyData: Startup) {
       heroImageURL,
     } = companyData;
 
+    //TODO: When the CSV file leaves a field blank, JS returns that field
+    //as an empty string (''). We need to check for that. Otherwise, our
+    //slides images will be blank and not any of the defaults we set.
+
     await companyCoverSlide(presentation, name, tagline, logoURL, heroImageURL);
     await addOverviewSlide(
       presentation,
       verticals,
       country,
       description,
-      logoURL
+      logoURL,
+      backgroundImageURL
     );
-    await theAskSlide(presentation, founder, website, logoURL);
+    await theAskSlide(
+      presentation,
+      founder,
+      website,
+      logoURL,
+      backgroundImageURL
+    );
   } catch (error) {
     throw new Error(`Failed to add company slides: \n${error}`);
   }
@@ -145,8 +152,8 @@ export async function generateDecks(data: Startup[]) {
   await createPresentation();
 
   //Adds each company to the deck
-  console.log("Adding slides for each company...");
   for (const company in data) {
+    console.log(`Adding slides for ${data[company].name}...`);
     await addCompany(data[company]);
   }
 

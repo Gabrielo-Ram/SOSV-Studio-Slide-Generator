@@ -26,14 +26,17 @@ export function companyCoverSlide(
   presentation: any,
   companyName: string,
   tagline: string,
-  logoURL = defaultLogo,
-  heroImageURL = defaultBackgroundImage
+  logoURL?: string,
+  heroImageURL?: string
 ) {
   let slide = presentation.addSlide();
 
   //Sets the background image
   slide.background = {
-    path: heroImageURL,
+    path:
+      heroImageURL === "" || !heroImageURL
+        ? defaultBackgroundImage
+        : heroImageURL,
     x: 0,
     y: 0,
     w: "100%",
@@ -43,9 +46,9 @@ export function companyCoverSlide(
   slide
     .addImage({
       // Company logo
-      path: logoURL,
+      path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
       x: "12%",
-      y: "20%%",
+      y: "20%",
       w: "30%",
       h: "25%",
       sizing: {
@@ -60,7 +63,6 @@ export function companyCoverSlide(
       y: "45%",
       w: "37%",
       h: "15%",
-      color: "FFFFFF",
     })
     .addText(tagline, {
       fontSize: 20,
@@ -91,13 +93,16 @@ export function addOverviewSlide(
   verticals: string,
   country: string,
   description: string,
-  logoURL = defaultLogo,
-  backgroundImage = defaultBackgroundImage
+  logoURL?: string,
+  backgroundImage?: string
 ) {
   let slide = presentation.addSlide();
 
   slide.background = {
-    path: backgroundImage,
+    path:
+      backgroundImage === "" || !backgroundImage
+        ? defaultBackgroundImage
+        : backgroundImage,
     x: 0,
     y: 0,
     w: "100%",
@@ -107,9 +112,9 @@ export function addOverviewSlide(
   slide
     .addImage({
       //Company Logo
-      path: logoURL,
+      path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
       x: "87%",
-      y: "87%",
+      y: "85%",
       w: "10%",
       //h: "10%",
       sizing: {
@@ -121,7 +126,7 @@ export function addOverviewSlide(
       fontSize: 36,
       x: "5%",
       y: "8%",
-      w: "80%",
+      w: "90%",
       h: "8%",
       align: "left",
     })
@@ -158,13 +163,16 @@ export function theAskSlide(
   presentation: any,
   founder: string,
   website: string,
-  logoURL = defaultLogo,
-  backgroundImage = defaultBackgroundImage
+  logoURL?: string,
+  backgroundImage?: string
 ) {
   let slide = presentation.addSlide();
 
   slide.background = {
-    path: backgroundImage,
+    path:
+      backgroundImage === "" || !backgroundImage
+        ? defaultBackgroundImage
+        : backgroundImage,
     x: 0,
     y: 0,
     w: "100%",
@@ -174,9 +182,9 @@ export function theAskSlide(
   slide
     .addImage({
       //Company Logo
-      path: logoURL,
+      path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
       x: "87%",
-      y: "87%",
+      y: "85%",
       w: "10%",
       //h: "10%",
       sizing: {
@@ -201,13 +209,16 @@ export function theAskSlide(
       h: "4%",
       align: "left",
     })
-    .addText(`${founder} is looking for...`, {
-      //Country of founding
-      fontSize: 20,
-      x: "5%",
-      y: "23%",
-      w: "80%",
-      h: "60%",
-      align: "left",
-    });
+    .addText(
+      `${founder} is looking for... \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in purus non orci consequat rhoncus sed sed turpis. Pellentesque metus quam, placerat vitae ipsum non, eleifend convallis magna. Donec sapien urna, aliquam quis iaculis et, scelerisque eu ligula. Pellentesque ultricies maximus risus, a dapibus ligula. Mauris vehicula venenatis sapien, eu ultrices ipsum tristique`,
+      {
+        //Country of founding
+        fontSize: 20,
+        x: "5%",
+        y: "23%",
+        w: "80%",
+        h: "60%",
+        align: "left",
+      }
+    );
 }

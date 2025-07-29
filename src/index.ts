@@ -40,8 +40,10 @@ async function main() {
 
     //Creates presentation using the parsed data
     const presentation = await generateDecks(startups);
-  } catch (err) {
-    console.error("Error parsing CSV:", err);
+  } catch (error) {
+    throw new Error(`Fatal error in entry file: \n${error}`);
+  } finally {
+    console.log(" ");
   }
 }
 

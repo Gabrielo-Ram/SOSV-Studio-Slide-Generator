@@ -16,11 +16,13 @@ const defaultBackgroundImage = "https://img.freepik.com/free-vector/abstract-pat
  * @param {string} logoURL An image URL of the company's logo
  * @param {string} heroImageURL An image URL of the company's hero image
  */
-export function companyCoverSlide(presentation, companyName, tagline, logoURL = defaultLogo, heroImageURL = defaultBackgroundImage) {
+export function companyCoverSlide(presentation, companyName, tagline, logoURL, heroImageURL) {
     let slide = presentation.addSlide();
     //Sets the background image
     slide.background = {
-        path: heroImageURL,
+        path: heroImageURL === "" || !heroImageURL
+            ? defaultBackgroundImage
+            : heroImageURL,
         x: 0,
         y: 0,
         w: "100%",
@@ -29,9 +31,9 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
     slide
         .addImage({
         // Company logo
-        path: logoURL,
+        path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
         x: "12%",
-        y: "20%%",
+        y: "20%",
         w: "30%",
         h: "25%",
         sizing: {
@@ -46,7 +48,6 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
         y: "45%",
         w: "37%",
         h: "15%",
-        color: "FFFFFF",
     })
         .addText(tagline, {
         fontSize: 20,
@@ -71,10 +72,12 @@ export function companyCoverSlide(presentation, companyName, tagline, logoURL = 
  * @param {string} logoURL An URL of the company's logo
  * @param {string} backgroundImage An URL of the company's hero image
  */
-export function addOverviewSlide(presentation, verticals, country, description, logoURL = defaultLogo, backgroundImage = defaultBackgroundImage) {
+export function addOverviewSlide(presentation, verticals, country, description, logoURL, backgroundImage) {
     let slide = presentation.addSlide();
     slide.background = {
-        path: backgroundImage,
+        path: backgroundImage === "" || !backgroundImage
+            ? defaultBackgroundImage
+            : backgroundImage,
         x: 0,
         y: 0,
         w: "100%",
@@ -83,9 +86,9 @@ export function addOverviewSlide(presentation, verticals, country, description, 
     slide
         .addImage({
         //Company Logo
-        path: logoURL,
+        path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
         x: "87%",
-        y: "87%",
+        y: "85%",
         w: "10%",
         //h: "10%",
         sizing: {
@@ -97,7 +100,7 @@ export function addOverviewSlide(presentation, verticals, country, description, 
         fontSize: 36,
         x: "5%",
         y: "8%",
-        w: "80%",
+        w: "90%",
         h: "8%",
         align: "left",
     })
@@ -129,10 +132,12 @@ export function addOverviewSlide(presentation, verticals, country, description, 
  * @param {string} logoURL The URL image of the logo
  * @param {string} backgroundImage An image URL of the background
  */
-export function theAskSlide(presentation, founder, website, logoURL = defaultLogo, backgroundImage = defaultBackgroundImage) {
+export function theAskSlide(presentation, founder, website, logoURL, backgroundImage) {
     let slide = presentation.addSlide();
     slide.background = {
-        path: backgroundImage,
+        path: backgroundImage === "" || !backgroundImage
+            ? defaultBackgroundImage
+            : backgroundImage,
         x: 0,
         y: 0,
         w: "100%",
@@ -141,9 +146,9 @@ export function theAskSlide(presentation, founder, website, logoURL = defaultLog
     slide
         .addImage({
         //Company Logo
-        path: logoURL,
+        path: logoURL === "" || !logoURL ? defaultLogo : logoURL,
         x: "87%",
-        y: "87%",
+        y: "85%",
         w: "10%",
         //h: "10%",
         sizing: {
@@ -168,7 +173,7 @@ export function theAskSlide(presentation, founder, website, logoURL = defaultLog
         h: "4%",
         align: "left",
     })
-        .addText(`${founder} is looking for...`, {
+        .addText(`${founder} is looking for... \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in purus non orci consequat rhoncus sed sed turpis. Pellentesque metus quam, placerat vitae ipsum non, eleifend convallis magna. Donec sapien urna, aliquam quis iaculis et, scelerisque eu ligula. Pellentesque ultricies maximus risus, a dapibus ligula. Mauris vehicula venenatis sapien, eu ultrices ipsum tristique`, {
         //Country of founding
         fontSize: 20,
         x: "5%",

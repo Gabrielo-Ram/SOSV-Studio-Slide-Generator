@@ -32,25 +32,24 @@ export async function parseCSVStream(filePath: string): Promise<Startup[]> {
       parse({
         //Parses CSV lines into JS objects
         columns: true,
-        skip_empty_lines: true,
         trim: true,
       }),
       async function* (source) {
         //Transforms each object to match our 'Startup' data interface
         for await (const record of source) {
           const filtered = {
-            name: record.name,
-            founder: record.gp_owner,
-            tagline: record.tagline,
-            stage: record.stage,
-            description: record.description,
-            foundingYear: record.founding_year,
-            country: record.country,
-            verticals: record.verticals,
-            website: record.website,
-            heroImageURL: record.hero_image,
-            logoURL: record.logo,
-            backgroundImageURL: record.background_image,
+            name: record.name || "Unknown",
+            founder: record.gp_owner || "Unknown",
+            tagline: record.tagline || "Unknown",
+            stage: record.stage || "Unknown",
+            description: record.description || "Unknown",
+            foundingYear: record.founding_year || "Unknown",
+            country: record.country || "Unknown",
+            verticals: record.verticals || "Unknown",
+            website: record.website || "Unknown",
+            heroImageURL: record.hero_image || "",
+            logoURL: record.logo || "",
+            backgroundImageURL: record.background_image || "",
           };
 
           startups.push(filtered);
@@ -62,9 +61,7 @@ export async function parseCSVStream(filePath: string): Promise<Startup[]> {
 
     return startups;
   } catch (error) {
-    console.error(
-      `❌ Error: The file [ ${filePath} ] does not exist or is of the wrong type.\n`
-    );
+    console.error(`❌ Error: Failed to parse file: ${filePath} \n${error}`);
     process.exit(1);
   }
 }
@@ -96,7 +93,7 @@ async function testFunction() {
     //Parses the CSV data
     const startups = await parseCSVStream(filePath);
 
-    console.log("✅ Succesfully parsed CSV data...");
+    console.log("✅ Successfully parsed CSV data...");
   } catch (err) {
     console.error("Error parsing CSV:", err);
   }

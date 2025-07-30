@@ -1,6 +1,9 @@
 # SOSV Studio Pitch Deck Tool (Prototype)
+<img width="1057" height="599" alt="Sample output of tool" src="https://github.com/user-attachments/assets/ffb25939-338f-4582-aa9f-fb66c505cd23" />
 
-A CLI tool that generates a PowerPoint pitch deck from a CSV file of startup companies. Designed for VC analysts and studio teams who need to share curated batches of startups with investors in a polished, presentation-ready format.
+
+
+This project is a CLI tool that generates a PowerPoint pitch deck from a CSV file of startup companies. Designed for VC analysts and studio teams who need to share curated batches of startups with investors in a polished, presentation-ready format.
 
 ## Why This Exists
 
